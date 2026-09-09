@@ -1,0 +1,330 @@
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* ── IDE Window ───────────────────────────────────────── */
+.showcaseWindow {
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-medium);
+  background: #06080d;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Window Chrome ────────────────────────────────────── */
+.windowChrome {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #0d1117;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+.trafficLights {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.chromePath {
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  flex: 1;
+  text-align: center;
+}
+
+.chromeRight {
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-shrink: 0;
+}
+
+.chromeIcon {
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Window Body ──────────────────────────────────────── */
+.windowBody {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  min-height: 500px;
+  flex: 1;
+}
+
+@media (max-width: 760px) {
+  .windowBody {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Left File Tree ───────────────────────────────────── */
+.fileTreePane {
+  background: rgba(10, 14, 22, 0.8);
+  border-right: 1px solid var(--border-subtle);
+  padding: 16px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow-y: auto;
+}
+
+.treeHeader {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-dim);
+  padding: 0 4px 8px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+
+.treeRoot {
+  padding: 4px 6px;
+}
+
+.treeRootName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.treeList {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 10px;
+  border-left: 1px solid rgba(255, 255, 255, 0.06);
+  margin-left: 8px;
+}
+
+.treeItem {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 8px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.treeItem:not(.treeItemLocked):hover {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text-primary);
+}
+
+.treeItemActive {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.2);
+  color: #ffffff;
+}
+
+.treeItemLocked {
+  cursor: default;
+  opacity: 0.4;
+}
+
+/* Status dots */
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.dotAmber {
+  background: #f59e0b;
+}
+
+.dotCyan {
+  background: var(--accent-cyan);
+}
+
+.dotDim {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.treeFileName {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.treeTag {
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1px 5px;
+  border-radius: var(--radius-xs);
+  flex-shrink: 0;
+  display: none;
+}
+
+.treeItemActive .treeTag {
+  display: inline;
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.1);
+}
+
+.treeLegend {
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.treeLegend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+
+/* ── Right Editor Pane ────────────────────────────────── */
+.editorPane {
+  display: flex;
+  flex-direction: column;
+  background: #04060a;
+  overflow: hidden;
+}
+
+/* Tab Bar */
+.tabBar {
+  display: flex;
+  border-bottom: 1px solid var(--border-subtle);
+  background: #080b12;
+  overflow-x: auto;
+  flex-shrink: 0;
+  scrollbar-width: none;
+}
+
+.tabBar::-webkit-scrollbar {
+  display: none;
+}
+
+.editorTab {
+  padding: 8px 16px;
+  font-size: 0.76rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border-subtle);
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.editorTab:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.editorTabActive {
+  color: var(--text-primary);
+  border-bottom-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.04);
+}
+
+/* Breadcrumb */
+.editorBreadcrumb {
+  padding: 6px 16px;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  color: var(--text-dim);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #04060a;
+  flex-shrink: 0;
+}
+
+/* ── Generation Flow Strip ────────────────────────────── */
+.flowStrip {
+  margin-top: 28px;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+
+@media (max-width: 680px) {
+  .flowStrip {
+    flex-direction: column;
+  }
+
+  .flowArrow {
+    transform: rotate(90deg);
+    align-self: center;
+  }
+}
+
+.flowCard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 20px 24px;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+
+.flowStep {
+  font-size: 0.72rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--accent-cyan);
+  letter-spacing: 0.06em;
+}
+
+.flowTitle {
+  font-size: 0.9375rem;
+  font-weight: 650;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.flowDesc {
+  font-size: 0.83rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.flowArrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 16px;
+  font-size: 1.25rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}

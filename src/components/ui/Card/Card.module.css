@@ -1,0 +1,52 @@
+.card {
+  position: relative;
+  background: var(--gradient-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 28px;
+  overflow: hidden;
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Glass Variant */
+.glass {
+  background: var(--gradient-card-glass);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--border-subtle);
+}
+
+/* Padding Variants */
+.paddingNone {
+  padding: 0;
+}
+
+.paddingSm {
+  padding: 16px;
+}
+
+.paddingLg {
+  padding: 36px;
+}
+
+/* Interactive Variant */
+.interactive {
+  cursor: pointer;
+}
+
+/* Glow Variant */
+.glow {
+  position: relative;
+}
+
+.glow::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.6), transparent);
+}
+
+

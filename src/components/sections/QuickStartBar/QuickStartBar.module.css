@@ -1,0 +1,197 @@
+.section {
+  padding: 80px 0;
+  position: relative;
+}
+
+/* Header Row (Header Left + Copy Top Right) */
+.headerRow {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (min-width: 960px) {
+  .headerRow {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 32px;
+  }
+}
+
+.headerLeft {
+  flex: 1;
+  max-width: 680px;
+}
+
+.sectionHeader {
+  margin: 0;
+}
+
+/* Command Card in Top Right */
+.commandCard {
+  border-radius: 8px;
+  padding: 4px 5px 4px 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  flex-shrink: 0;
+  height: 34px;
+  box-sizing: border-box;
+}
+
+
+.commandLeft {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  line-height: 1;
+}
+
+.promptSymbol {
+  color: var(--accent-cyan);
+  font-weight: 700;
+  user-select: none;
+  font-size: 0.8125rem;
+}
+
+.commandText {
+  color: #ffffff;
+  font-weight: 550;
+  white-space: nowrap;
+  letter-spacing: -0.01em;
+}
+
+.copyBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  border-radius: 5px;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  line-height: 1;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  white-space: nowrap;
+}
+
+.copyBtn:hover {
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.copyBtn.copied {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+}
+
+/* 3 Columns Grid */
+.columnsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+@media (min-width: 860px) {
+  .columnsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.columnHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.stepBadge {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  background: rgba(56, 189, 248, 0.12);
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.columnTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+/* Card */
+.card {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+}
+
+.cardTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.cardName {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.pill {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 2px 7px;
+  border-radius: 5px;
+  line-height: 1.2;
+}
+
+.cardDesc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.55;
+}
+
+.pillRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.subPill {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 3px 8px;
+  border-radius: 5px;
+}

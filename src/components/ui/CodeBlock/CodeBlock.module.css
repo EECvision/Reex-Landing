@@ -1,0 +1,122 @@
+.wrapper {
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+  background: #05070c;
+  overflow: hidden;
+  position: relative;
+  font-family: var(--font-mono);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 18px;
+  background: rgba(16, 22, 34, 0.6);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  transition: opacity 0.2s ease;
+}
+
+.dotClose { background: #ef4444; opacity: 0.85; }
+.dotMin { background: #f59e0b; opacity: 0.85; }
+.dotMax { background: #10b981; opacity: 0.85; }
+
+.title {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  font-weight: 550;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  letter-spacing: -0.01em;
+}
+
+.copyButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: var(--font-mono);
+}
+
+.copyButton:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  border-color: var(--border-medium);
+}
+
+.copyButton.copied {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--accent-emerald);
+  border-color: rgba(16, 185, 129, 0.35);
+}
+
+.pre {
+  margin: 0;
+  padding: 20px 24px;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  background: #05070c;
+}
+
+.codeTable {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.codeRow {
+  display: table-row;
+  transition: background-color 0.12s ease;
+}
+
+.codeRow:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.lineNumber {
+  display: table-cell;
+  text-align: right;
+  padding-right: 20px;
+  user-select: none;
+  color: var(--text-dim);
+  font-size: 0.8125rem;
+  vertical-align: top;
+  width: 1%;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+.codeContent {
+  display: table-cell;
+  white-space: pre;
+  vertical-align: top;
+}

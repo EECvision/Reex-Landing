@@ -1,0 +1,84 @@
+.section {
+  padding: 80px 0;
+}
+
+/* ── List ─────────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* ── Item ─────────────────────────────────────────────── */
+.item {
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+/* ── Trigger ──────────────────────────────────────────── */
+.trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 0;
+  background: transparent;
+  border: none;
+  gap: 24px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.question {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  flex: 1;
+}
+
+.itemOpen .question {
+  color: #ffffff;
+}
+
+.toggle {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: var(--text-dim);
+  flex-shrink: 0;
+  line-height: 1;
+  width: 20px;
+  text-align: center;
+  user-select: none;
+}
+
+.toggleOpen {
+  color: var(--accent-cyan);
+}
+
+/* ── Content ──────────────────────────────────────────── */
+.content {
+  padding: 0 0 20px;
+  color: var(--text-secondary);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+}
+
+.content p {
+  margin: 0;
+}
+
+.content strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.content code {
+  font-family: var(--font-mono);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 2px 7px;
+  border-radius: var(--radius-xs);
+  color: var(--accent-cyan);
+  font-size: 0.875em;
+}

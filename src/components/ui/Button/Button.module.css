@@ -1,0 +1,130 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-weight: 550;
+  border-radius: var(--radius-md);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  white-space: nowrap;
+  user-select: none;
+  border: 1px solid transparent;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.button:focus-visible {
+}
+
+/* Sizes */
+.sm {
+  height: 34px;
+  padding: 0 14px;
+  font-size: 0.8125rem;
+  letter-spacing: -0.01em;
+}
+
+.md {
+  height: 44px;
+  padding: 0 20px;
+  font-size: 0.9375rem;
+  letter-spacing: -0.01em;
+}
+
+.lg {
+  height: 52px;
+  padding: 0 28px;
+  font-size: 1.025rem;
+  border-radius: var(--radius-lg);
+  letter-spacing: -0.015em;
+}
+
+/* Variants */
+.primary {
+  background: var(--gradient-accent);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.primary:hover {
+  filter: brightness(1.08);
+}
+
+.primary:active {
+  filter: brightness(0.96);
+}
+
+.glow {
+  background: #ffffff;
+  color: #030508;
+  font-weight: 650;
+  border: 1px solid #ffffff;
+}
+
+.glow:hover {
+  filter: brightness(0.9);
+}
+
+.glow:active {
+}
+
+.secondary {
+  background: var(--bg-surface-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+}
+
+.secondary:hover {
+  background: var(--bg-surface-hover);
+  border-color: var(--border-bright);
+  color: #ffffff;
+}
+
+.secondary:active {
+}
+
+.outline {
+  background: rgba(16, 22, 34, 0.5);
+  backdrop-filter: blur(12px);
+  color: var(--text-primary);
+  border: 1px solid var(--border-subtle);
+}
+
+.outline:hover {
+  background: rgba(24, 33, 50, 0.75);
+  border-color: var(--border-highlight);
+  color: #ffffff;
+}
+
+.outline:active {
+}
+
+.ghost {
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+/* Disabled */
+.button:disabled,
+.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover .icon {
+}
