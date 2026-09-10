@@ -1,9 +1,9 @@
 .container {
   width: 100%;
+  min-width: 0;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-inline: var(--page-gutter);
 }
 
 .default {
@@ -20,18 +20,4 @@
 
 .full {
   max-width: 100%;
-}
-
-@media (min-width: 640px) {
-  .container {
-    padding-left: 28px;
-    padding-right: 28px;
-  }
-}
-
-@media (min-width: 1024px) {
-  .container {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
 }

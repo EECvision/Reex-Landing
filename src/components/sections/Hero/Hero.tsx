@@ -8,7 +8,6 @@ import {
   Terminal,
   Copy,
   Check,
-  Star,
   ShieldCheck,
   Cpu,
   Layers,
@@ -79,11 +78,12 @@ export const Hero: React.FC = () => {
               type="button"
               className={styles.cliQuickCopy}
               onClick={handleCopyCommand}
-              title="Click to copy CLI start command"
+              title="Copy CLI install command"
+              aria-label={copied ? "Install command copied" : "Copy CLI install command"}
             >
               <Terminal size={17} color="var(--accent-cyan)" />
               <span>npm i -g reex-cli</span>
-              <span className={styles.copyStatus}>
+              <span className={styles.copyStatus} aria-live="polite">
                 {copied ? <Check size={16} /> : <Copy size={16} />}
               </span>
             </button>

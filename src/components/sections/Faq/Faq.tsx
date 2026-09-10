@@ -104,6 +104,7 @@ export const Faq: React.FC = () => {
                   className={styles.trigger}
                   onClick={() => toggleItem(idx)}
                   aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${idx}`}
                 >
                   <span className={styles.question}>{item.question}</span>
                   <span className={`${styles.toggle} ${isOpen ? styles.toggleOpen : ""}`}>
@@ -112,7 +113,7 @@ export const Faq: React.FC = () => {
                 </button>
 
                 {isOpen && (
-                  <div className={styles.content}>{item.answer}</div>
+                  <div id={`faq-answer-${idx}`} className={styles.content}>{item.answer}</div>
                 )}
               </div>
             );

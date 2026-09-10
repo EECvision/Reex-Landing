@@ -20,6 +20,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Responsive checks
+
+The mobile layout plan is in [MOBILE_RESPONSIVENESS_PLAN.md](./MOBILE_RESPONSIVENESS_PLAN.md).
+
+Install the test browsers once, then run the browser checks:
+
+```bash
+npx playwright install
+npm run test:responsive
+```
+
+The suite covers widths from 320px to 1440px and breakpoint boundaries, navigation and landscape menus, generated files, schema diffs, local code scrolling, enlarged text, FAQ and feature filters, clipboard actions, and phone touch input. It runs Chromium, WebKit, and Firefox. Clipboard checks run in Chromium; phone touch emulation runs in Chromium and WebKit.
+
+Playwright starts a local server on port 3100 or reuses one already running there. Set `PLAYWRIGHT_PRODUCTION=1` after `npm run build` to start a production server for the checks; stop any development server on port 3100 first. If using an installed Chrome instead of Playwright's Chromium, set `PLAYWRIGHT_CHANNEL=chrome`.
+
+On PowerShell, set these options with `$env:PLAYWRIGHT_PRODUCTION = '1'` or `$env:PLAYWRIGHT_CHANNEL = 'chrome'` before the test command. Screenshots and traces from failures are stored in the ignored `test-results/` directory. Real iOS and Android devices still need a final manual check.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

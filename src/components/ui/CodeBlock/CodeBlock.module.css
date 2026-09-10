@@ -1,4 +1,6 @@
 .wrapper {
+  min-width: 0;
+  max-width: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
   background: #05070c;
@@ -8,6 +10,8 @@
 }
 
 .header {
+  flex-wrap: wrap;
+  gap: 12px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -18,6 +22,7 @@
 }
 
 .headerLeft {
+  min-width: 0;
   display: flex;
   align-items: center;
   gap: 14px;
@@ -41,6 +46,8 @@
 .dotMax { background: #10b981; opacity: 0.85; }
 
 .title {
+  overflow-wrap: anywhere;
+  min-width: 0;
   font-size: 0.8125rem;
   color: var(--text-secondary);
   font-weight: 550;
@@ -51,6 +58,7 @@
 }
 
 .copyButton {
+  min-height: 44px;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -119,4 +127,18 @@
   display: table-cell;
   white-space: pre;
   vertical-align: top;
+}
+
+@media (max-width: 639px) {
+  .pre {
+    padding: 16px 12px;
+    font-size: 0.8125rem;
+  }
+  .lineNumber {
+    padding-right: 12px;
+    font-size: 0.75rem;
+  }
+  .header {
+    padding: 12px;
+  }
 }

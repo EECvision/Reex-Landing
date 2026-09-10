@@ -22,6 +22,7 @@ export const Button: React.FC<ButtonProps> = ({
   children,
   className = "",
   disabled,
+  tabIndex,
   ...props
 }) => {
   const combinedClassName = `${styles.button} ${styles[variant]} ${styles[size]} ${
@@ -44,20 +45,21 @@ export const Button: React.FC<ButtonProps> = ({
           target="_blank"
           rel="noopener noreferrer"
           className={combinedClassName}
+          tabIndex={tabIndex}
         >
           {content}
         </a>
       );
     }
     return (
-      <Link href={href} className={combinedClassName}>
+      <Link href={href} className={combinedClassName} tabIndex={tabIndex}>
         {content}
       </Link>
     );
   }
 
   return (
-    <button className={combinedClassName} disabled={disabled} {...props}>
+    <button className={combinedClassName} disabled={disabled} tabIndex={tabIndex} {...props}>
       {content}
     </button>
   );

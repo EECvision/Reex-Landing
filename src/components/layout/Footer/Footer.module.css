@@ -19,9 +19,13 @@
 
 .grid {
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 48px;
-  margin-bottom: 64px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 32px;
+  margin-bottom: var(--section-header-gap);
+}
+
+.grid > * {
+  min-width: 0;
 }
 
 .brandCol {
@@ -82,6 +86,7 @@
 }
 
 .linkItem a {
+  overflow-wrap: anywhere;
   color: var(--text-secondary);
   font-size: 0.875rem;
   display: inline-flex;
@@ -115,6 +120,7 @@
 }
 
 .statusPill {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -134,13 +140,44 @@
   background: var(--accent-emerald);
 }
 
-@media (min-width: 768px) {
+@media (min-width: 640px) {
   .grid {
-    grid-template-columns: 2fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr));
     gap: 36px;
   }
 
   .bottomBar {
     flex-direction: row;
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer {
+    padding: var(--section-space) 0 24px;
+  }
+  .linkList {
+    gap: 0;
+  }
+  .linkItem a {
+    min-height: 44px;
+    padding-block: 8px;
+  }
+  .colTitle {
+    margin-bottom: 8px;
+  }
+  .bottomBar {
+    text-align: center;
+  }
+}
+
+@media (pointer: coarse) {
+  .linkItem a {
+    min-height: 44px;
   }
 }

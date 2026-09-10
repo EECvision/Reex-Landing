@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
 }
 
 /* ── Tabs ─────────────────────────────────────────────── */
@@ -13,6 +13,8 @@
 }
 
 .tab {
+  min-height: 44px;
+  max-width: 100%;
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -54,23 +56,24 @@
 /* ── Feature Grid ─────────────────────────────────────── */
 .featureGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 0;
 }
 
 @media (min-width: 640px) {
   .featureGrid {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (min-width: 960px) {
   .featureGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 .featureItem {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -132,4 +135,14 @@
 .categoryLabel {
   color: var(--text-secondary);
   font-weight: 500;
+}
+
+@media (max-width: 639px) {
+  .featureDesc {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  .tab {
+    color: var(--text-secondary);
+  }
 }

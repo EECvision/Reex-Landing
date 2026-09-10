@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
   position: relative;
 }
 
@@ -54,7 +54,7 @@
   gap: 16px;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 639px) {
   .bannerCard {
     padding: 48px 20px;
   }

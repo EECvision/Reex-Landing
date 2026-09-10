@@ -3,8 +3,8 @@
 import { CodeBlock } from "@/components/ui/CodeBlock/CodeBlock";
 import { Container } from "@/components/ui/Container/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { SquareTerminal } from "lucide-react";
-import React, { useState } from "react";
+import { ChevronDown, SquareTerminal } from "lucide-react";
+import React, { useEffect, useRef, useState } from "react";
 import styles from "./GeneratedCodeShowcase.module.css";
 
 /* ── File tree node types ──────────────────────────────── */
@@ -255,6 +255,25 @@ const FLOW_STEPS = [
 
 export const GeneratedCodeShowcase: React.FC = () => {
   const [activeTab, setActiveTab] = useState<TabKey>("definitions");
+  const [explorerOpen, setExplorerOpen] = useState(false);
+  const tabBarRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const bar = tabBarRef.current;
+    if (!bar) return;
+    const revealActiveTab = () => {
+      const tab = bar.querySelector<HTMLButtonElement>('[aria-pressed="true"]');
+      if (!tab) return;
+      const bounds = bar.getBoundingClientRect();
+      const selected = tab.getBoundingClientRect();
+      if (selected.left < bounds.left) bar.scrollLeft += selected.left - bounds.left;
+      else if (selected.right > bounds.right) bar.scrollLeft += selected.right - bounds.right;
+    };
+    revealActiveTab();
+    const observer = new ResizeObserver(revealActiveTab);
+    observer.observe(bar);
+    return () => observer.disconnect();
+  }, [activeTab]);
 
   const current = CODE_FILES[activeTab];
 
@@ -288,8 +307,18 @@ export const GeneratedCodeShowcase: React.FC = () => {
 
           {/* Body: Tree + Editor */}
           <div className={styles.windowBody}>
+            <button
+              type="button"
+              className={styles.explorerToggle}
+              aria-expanded={explorerOpen}
+              aria-controls="generated-file-explorer"
+              onClick={() => setExplorerOpen((open) => !open)}
+            >
+              Browse generated files
+              <ChevronDown size={16} aria-hidden="true" />
+            </button>
             {/* Left File Tree */}
-            <div className={styles.fileTreePane}>
+            <div id="generated-file-explorer" className={styles.fileTreePane} data-open={explorerOpen}>
               <div className={styles.treeHeader}>Explorer</div>
 
               {TREE.map((folder) => (
@@ -300,8 +329,11 @@ export const GeneratedCodeShowcase: React.FC = () => {
 
                   <div className={styles.treeList}>
                     {folder.children?.map((file) => (
-                      <div
+                      <button
+                        type="button"
                         key={file.key}
+                        disabled={!file.clickable}
+                        aria-pressed={file.clickable ? activeTab === file.key : undefined}
                         className={`${styles.treeItem} ${
                           !file.clickable ? styles.treeItemLocked : ""
                         } ${activeTab === file.key ? styles.treeItemActive : ""}`}
@@ -319,7 +351,7 @@ export const GeneratedCodeShowcase: React.FC = () => {
                             {STATUS_LABEL[file.status]}
                           </span>
                         )}
-                      </div>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -345,10 +377,13 @@ export const GeneratedCodeShowcase: React.FC = () => {
             {/* Right Editor Pane */}
             <div className={styles.editorPane}>
               {/* Tab Bar */}
-              <div className={styles.tabBar}>
+              <div ref={tabBarRef} className={styles.tabBar} role="group" aria-label="Generated code files">
                 {(Object.keys(CODE_FILES) as TabKey[]).map((key) => (
                   <button
+                    type="button"
                     key={key}
+                    aria-pressed={activeTab === key}
+                    aria-controls="generated-code-preview"
                     className={`${styles.editorTab} ${
                       activeTab === key ? styles.editorTabActive : ""
                     }`}
@@ -360,14 +395,22 @@ export const GeneratedCodeShowcase: React.FC = () => {
               </div>
 
               {/* Breadcrumb */}
-              <div className={styles.editorBreadcrumb}>{current.filename}</div>
+              <div className={styles.editorBreadcrumb}>
+                {current.filename.split("/").map((segment, index, segments) => (
+                  <React.Fragment key={index}>
+                    {segment}{index < segments.length - 1 && <>/<wbr /></>}
+                  </React.Fragment>
+                ))}
+              </div>
 
-              <CodeBlock
-                language="typescript"
-                code={current.code}
-                showLineNumbers={true}
-                copyable={false}
-              />
+              <div id="generated-code-preview" className={styles.codePreview}>
+                <CodeBlock
+                  language="typescript"
+                  code={current.code}
+                  showLineNumbers={true}
+                  copyable={false}
+                />
+              </div>
             </div>
           </div>
         </div>

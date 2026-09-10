@@ -1,7 +1,7 @@
 .header {
   text-align: left;
   max-width: 760px;
-  margin: 0 0 64px;
+  margin: 0 0 var(--section-header-gap);
 }
 
 .center {
@@ -11,6 +11,7 @@
 }
 
 .tag {
+  flex-wrap: wrap;
   color: var(--accent-cyan);
   font-weight: 700;
   font-size: 0.85rem;
@@ -42,6 +43,7 @@
 }
 
 .description {
+  overflow-wrap: anywhere;
   font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.7;

@@ -66,7 +66,7 @@ export const HowItWorks: React.FC = () => {
                 <h3 className={styles.stepTitle}>{step.title}</h3>
                 <p className={styles.stepDesc}>{step.desc}</p>
 
-                <div className={styles.graphic}>
+                <div className={styles.graphic} tabIndex={0} role="region" aria-label={`${step.title} example`}>
                   {step.graphic.map((line, li) => (
                     <div key={li} className={styles.graphicLine}>
                       {line.text === "" ? (

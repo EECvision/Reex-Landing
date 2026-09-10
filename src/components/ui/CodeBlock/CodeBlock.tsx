@@ -128,7 +128,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         </div>
       )}
 
-      <pre className={styles.pre}>
+      <pre className={styles.pre} tabIndex={0} role="region" aria-label={filename || `${language} code sample`}>
         {showLineNumbers ? (
           <div className={styles.codeTable}>
             {lines.map((line, idx) => (

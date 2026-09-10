@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Container } from "@/components/ui/Container/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
 import styles from "./ApiDiffShowcase.module.css";
@@ -124,12 +124,39 @@ export const ApiDiffShowcase: React.FC = () => {
   const [checked, setChecked]           = useState(new Set(INITIAL_CHECKED));
   const [activeDiffId, setActiveDiffId] = useState<string | null>("post-account-reports");
   const [applied, setApplied]           = useState(false);
+  const diffPanelRef = useRef<HTMLDivElement>(null);
+  const revealDiff = useRef(false);
+
+  useEffect(() => {
+    if (!revealDiff.current) return;
+    revealDiff.current = false;
+    if (window.matchMedia("(max-width: 959px)").matches) {
+      diffPanelRef.current?.focus({ preventScroll: true });
+      diffPanelRef.current?.scrollIntoView({ block: "nearest" });
+    }
+  }, [activeDiffId]);
+
+  const toggleDiff = (id: string) => {
+    const nextId = activeDiffId === id ? null : id;
+    revealDiff.current = nextId !== null;
+    setActiveDiffId(nextId);
+  };
 
   const toggleExpand = (id: string) =>
-    setExpanded((prev) => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n; });
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
 
   const toggleCheck = (id: string) =>
-    setChecked((prev) => { const n = new Set(prev); n.has(id) ? n.delete(id) : n.add(id); return n; });
+    setChecked((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
 
   /* dynamic apply button label */
   const addCount    = ALL_ENDPOINTS.filter((e) => e.status === "NEW"      && checked.has(e.id)).length;
@@ -160,7 +187,7 @@ export const ApiDiffShowcase: React.FC = () => {
           {/* Title Bar */}
           <div className={styles.titleBar}>
             <span className={styles.modalTitle}>Review Changes</span>
-            <button className={styles.closeBtn} aria-label="Close">✕</button>
+            <span className={styles.closeBtn} aria-hidden="true">✕</span>
           </div>
 
           {/* Summary strip */}
@@ -185,36 +212,51 @@ export const ApiDiffShowcase: React.FC = () => {
 
                 return (
                   <div key={mod.id} className={styles.moduleGroup}>
-                    <div className={styles.moduleHeader} onClick={() => toggleExpand(mod.id)}>
-                      <span className={styles.chevron}>{isExpanded ? "▾" : "▸"}</span>
+                    <button
+                      type="button"
+                      className={styles.moduleHeader}
+                      onClick={() => toggleExpand(mod.id)}
+                      aria-expanded={isExpanded}
+                      aria-controls={`endpoints-${mod.id}`}
+                    >
+                      <span className={styles.chevron} aria-hidden="true">{isExpanded ? "▾" : "▸"}</span>
                       <span className={styles.moduleName}>{mod.name}</span>
                       <span className={styles.moduleCount}>{checkedCount}/{mod.endpoints.length}</span>
-                    </div>
+                    </button>
 
                     {isExpanded && (
-                      <div className={styles.endpointList}>
+                      <div id={`endpoints-${mod.id}`} className={styles.endpointList}>
                         {mod.endpoints.map((ep) => (
                           <div
                             key={ep.id}
                             className={`${styles.endpointRow} ${activeDiffId === ep.id ? styles.endpointRowActive : ""}`}
                           >
-                            <input
-                              type="checkbox"
-                              className={styles.epCheck}
-                              checked={checked.has(ep.id)}
-                              onChange={() => toggleCheck(ep.id)}
-                            />
-                            <span className={styles.epMethod} style={{ color: METHOD_COLOR[ep.method] }}>
-                              {ep.method}
-                            </span>
-                            <span className={styles.epPath}>{ep.path}</span>
+                            <label className={styles.epSelection}>
+                              <input
+                                type="checkbox"
+                                aria-label={`Select ${ep.method} ${ep.path}`}
+                                className={styles.epCheck}
+                                checked={checked.has(ep.id)}
+                                onChange={() => toggleCheck(ep.id)}
+                              />
+                            </label>
+                            <div className={styles.epIdentity}>
+                              <span className={styles.epMethod} style={{ color: METHOD_COLOR[ep.method] }}>
+                                {ep.method}
+                              </span>
+                              <span className={styles.epPath}>{ep.path}</span>
+                            </div>
                             <span className={`${styles.epBadge} ${styles[STATUS_CLASS[ep.status]]}`}>
                               {ep.status}
                             </span>
                             {ep.diffLines && (
                               <button
+                                type="button"
+                                aria-label={`${activeDiffId === ep.id ? "Hide" : "View"} diff for ${ep.method} ${ep.path}`}
+                                aria-expanded={activeDiffId === ep.id}
+                                aria-controls="endpoint-diff-preview"
                                 className={`${styles.viewBtn} ${activeDiffId === ep.id ? styles.viewBtnActive : ""}`}
-                                onClick={() => setActiveDiffId(activeDiffId === ep.id ? null : ep.id)}
+                                onClick={() => toggleDiff(ep.id)}
                               >
                                 {activeDiffId === ep.id ? "Hide" : "Diff"}
                               </button>
@@ -230,29 +272,38 @@ export const ApiDiffShowcase: React.FC = () => {
 
             {/* Right: inline diff panel */}
             {activeDiffEp?.diffLines && (
-              <div className={styles.diffPanel}>
+              <div
+                ref={diffPanelRef}
+                id="endpoint-diff-preview"
+                className={styles.diffPanel}
+                role="region"
+                aria-label={`Diff for ${activeDiffEp.method} ${activeDiffEp.path}`}
+                tabIndex={-1}
+              >
                 <div className={styles.diffPanelHeader}>
                   <span className={styles.diffPanelMethod} style={{ color: METHOD_COLOR[activeDiffEp.method] }}>
                     {activeDiffEp.method}
                   </span>
                   <span className={styles.diffPanelPath}>{activeDiffEp.path}</span>
                 </div>
-                <div className={styles.diffLines}>
-                  {activeDiffEp.diffLines.map((line, i) => (
-                    <div
-                      key={i}
-                      className={`${styles.diffLine} ${
-                        line.type === "added"   ? styles.lineAdded   :
-                        line.type === "removed" ? styles.lineRemoved :
-                                                  styles.lineUnchanged
-                      }`}
-                    >
-                      <span className={styles.linePrefix}>
-                        {line.type === "added" ? "+" : line.type === "removed" ? "−" : " "}
-                      </span>
-                      <code className={styles.lineText}>{line.text}</code>
-                    </div>
-                  ))}
+                <div className={styles.diffLines} tabIndex={0} role="region" aria-label="Code changes">
+                  <div className={styles.diffContent}>
+                    {activeDiffEp.diffLines.map((line, i) => (
+                      <div
+                        key={i}
+                        className={`${styles.diffLine} ${
+                          line.type === "added"   ? styles.lineAdded   :
+                          line.type === "removed" ? styles.lineRemoved :
+                                                    styles.lineUnchanged
+                        }`}
+                      >
+                        <span className={styles.linePrefix}>
+                          {line.type === "added" ? "+" : line.type === "removed" ? "−" : " "}
+                        </span>
+                        <code className={styles.lineText}>{line.text}</code>
+                      </div>
+                    ))}
+                  </div>
                 </div>
                 <div className={styles.diffPanelFootnote}>
                   AST-safe: custom overrides in your repo are preserved.
@@ -264,6 +315,7 @@ export const ApiDiffShowcase: React.FC = () => {
           {/* Footer */}
           <div className={styles.modalFooter}>
             <button
+              type="button"
               className={`${styles.primaryBtn} ${applied ? styles.appliedBtn : ""}`}
               disabled={!canApply}
               onClick={() => setApplied(true)}

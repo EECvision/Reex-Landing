@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
   position: relative;
 }
 
@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
-  margin-bottom: 48px;
+  margin-bottom: var(--section-header-gap);
 }
 
 @media (min-width: 960px) {
@@ -21,6 +21,7 @@
 }
 
 .headerLeft {
+  min-width: 0;
   flex: 1;
   max-width: 680px;
 }
@@ -38,12 +39,15 @@
   justify-content: space-between;
   gap: 10px;
   flex-shrink: 0;
-  height: 34px;
+  min-height: 34px;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
 
 .commandLeft {
+  min-width: 0;
+  overflow-x: auto;
   display: flex;
   align-items: center;
   gap: 7px;
@@ -67,6 +71,7 @@
 }
 
 .copyBtn {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   gap: 5px;
@@ -95,17 +100,18 @@
 /* 3 Columns Grid */
 .columnsGrid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 1fr);
   gap: 24px;
 }
 
 @media (min-width: 860px) {
   .columnsGrid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 .column {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -187,6 +193,7 @@
 }
 
 .subPill {
+  overflow-wrap: anywhere;
   font-size: 0.75rem;
   font-family: var(--font-mono);
   color: var(--text-secondary);
@@ -194,4 +201,11 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   padding: 3px 8px;
   border-radius: 5px;
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  .copyBtn {
+    min-height: 44px;
+    padding: 8px 12px;
+  }
 }

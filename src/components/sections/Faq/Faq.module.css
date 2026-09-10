@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
 }
 
 /* ── List ─────────────────────────────────────────────── */
@@ -29,6 +29,8 @@
 }
 
 .question {
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-size: 1rem;
   font-weight: 600;
   color: var(--text-secondary);
@@ -58,6 +60,7 @@
 
 /* ── Content ──────────────────────────────────────────── */
 .content {
+  overflow-wrap: anywhere;
   padding: 0 0 20px;
   color: var(--text-secondary);
   font-size: 0.9375rem;
@@ -74,6 +77,7 @@
 }
 
 .content code {
+  overflow-wrap: anywhere;
   font-family: var(--font-mono);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -81,4 +85,12 @@
   border-radius: var(--radius-xs);
   color: var(--accent-cyan);
   font-size: 0.875em;
+}
+
+@media (max-width: 639px) {
+  .trigger {
+    gap: 12px;
+    padding: 16px 0;
+    min-height: 44px;
+  }
 }

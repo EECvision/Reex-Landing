@@ -7,7 +7,9 @@
   border-radius: var(--radius-md);
   transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
-  white-space: nowrap;
+  white-space: normal;
+  max-width: 100%;
+  text-align: center;
   user-select: none;
   border: 1px solid transparent;
   outline: none;
@@ -17,26 +19,28 @@
 }
 
 .button:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
 }
 
 /* Sizes */
 .sm {
-  height: 34px;
-  padding: 0 14px;
+  min-height: 34px;
+  padding: 6px 14px;
   font-size: 0.8125rem;
   letter-spacing: -0.01em;
 }
 
 .md {
-  height: 44px;
-  padding: 0 20px;
+  min-height: 44px;
+  padding: 8px 20px;
   font-size: 0.9375rem;
   letter-spacing: -0.01em;
 }
 
 .lg {
-  height: 52px;
-  padding: 0 28px;
+  min-height: 52px;
+  padding: 10px 28px;
   font-size: 1.025rem;
   border-radius: var(--radius-lg);
   letter-spacing: -0.015em;
@@ -121,10 +125,17 @@
 }
 
 .icon {
+  flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
 }
 
 .button:hover .icon {
+}
+
+@media (max-width: 1023px), (pointer: coarse) {
+  .sm {
+    min-height: 44px;
+  }
 }

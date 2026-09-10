@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
 }
 
 /* ── Card ─────────────────────────────────────────────── */
@@ -24,6 +24,7 @@
 
 /* ── Left ─────────────────────────────────────────────── */
 .cardLeft {
+  min-width: 0;
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -78,6 +79,7 @@
 
 /* ── Right ────────────────────────────────────────────── */
 .cardRight {
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -95,6 +97,7 @@
 
 /* Copyable install command */
 .installBox {
+  min-height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -114,10 +117,12 @@
 }
 
 .installCmd {
+  min-width: 0;
+  overflow-wrap: anywhere;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
   color: var(--text-primary);
-  white-space: nowrap;
+  white-space: normal;
 }
 
 .installCopy {
@@ -135,4 +140,22 @@
 
 .installCopied {
   color: var(--accent-emerald);
+}
+
+@media (max-width: 639px) {
+  .card {
+    padding: 24px 16px;
+    gap: 24px;
+  }
+  .pillars {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 10px;
+  }
+  .cardRight > a {
+    width: 100%;
+  }
+  .installBox {
+    gap: 8px;
+    padding: 12px;
+  }
 }

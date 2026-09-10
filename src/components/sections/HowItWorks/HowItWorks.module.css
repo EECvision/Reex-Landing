@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
 }
 
 /* ── Timeline ─────────────────────────────────────────── */
@@ -12,7 +12,7 @@
 /* ── Step Row ─────────────────────────────────────────── */
 .step {
   display: grid;
-  grid-template-columns: 48px 1fr;
+  grid-template-columns: 48px minmax(0, 1fr);
   gap: 0 28px;
 }
 
@@ -53,6 +53,7 @@
 
 /* ── Content Column ───────────────────────────────────── */
 .content {
+  min-width: 0;
   padding-bottom: 52px;
   display: flex;
   flex-direction: column;
@@ -85,6 +86,9 @@
 
 /* ── Terminal Graphic ─────────────────────────────────── */
 .graphic {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
   margin-top: 6px;
   background: #04060a;
   border: 1px solid var(--border-subtle);
@@ -99,4 +103,22 @@
 
 .graphicLine {
   white-space: pre;
+}
+
+@media (max-width: 639px) {
+  .step {
+    grid-template-columns: 32px minmax(0, 1fr);
+    column-gap: 12px;
+  }
+  .dot {
+    width: 32px;
+    height: 32px;
+  }
+  .content {
+    padding-top: 4px;
+    padding-bottom: 32px;
+  }
+  .graphic {
+    padding: 12px;
+  }
 }

@@ -1,5 +1,5 @@
 .section {
-  padding: 80px 0;
+  padding: var(--section-space) 0;
   position: relative;
   z-index: 10;
 }
@@ -66,4 +66,18 @@
   border-color: transparent transparent transparent #ffffff;
   margin-left: 6px;
   transition: border-color 0.3s ease;
+}
+
+@media (max-width: 639px) {
+  .videoPlaceholderWrapper {
+    border-radius: var(--radius-lg);
+  }
+  .playButtonOverlay {
+    width: 52px;
+    height: 52px;
+  }
+  .playIcon {
+    border-width: 10px 0 10px 16px;
+    margin-left: 4px;
+  }
 }

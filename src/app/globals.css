@@ -67,6 +67,26 @@
 
   /* Container */
   --container-max-width: 1280px;
+  --page-gutter: 16px;
+  --header-height: 60px;
+  --section-space: 48px;
+  --section-header-gap: 32px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --page-gutter: 24px;
+    --section-space: 64px;
+    --section-header-gap: 48px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 40px;
+    --section-space: 80px;
+    --section-header-gap: 64px;
+  }
 }
 
 /* Reset and Base Styles */
@@ -79,14 +99,14 @@
 html {
   color-scheme: dark;
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
   background-color: var(--bg-void);
 }
 
 html,
 body {
-  max-width: 100vw;
+  max-width: 100%;
   min-height: 100vh;
-  overflow-x: hidden;
 }
 
 body {
@@ -137,6 +157,27 @@ a {
 
 button, input, select, textarea {
   font-family: inherit;
+}
+
+p, h1, h2, h3, h4 {
+  overflow-wrap: anywhere;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent-cyan);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 
 /* Custom Minimalist Scrollbar */
