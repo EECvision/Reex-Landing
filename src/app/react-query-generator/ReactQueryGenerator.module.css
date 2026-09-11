@@ -1,0 +1,214 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #050608;
+  color: #fff;
+}
+
+.mainSection {
+  flex: 1;
+  padding: 80px 0;
+}
+
+.heroContainer {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 80px auto;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.2);
+  border-radius: 9999px;
+  padding: 6px 16px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  color: #06b6d4;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  background: linear-gradient(to right, #fff, #94a3b8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.description {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 32px;
+}
+
+.ctaGroup {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.ctaPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #06b6d4;
+  color: #000;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.ctaPrimary:hover {
+  opacity: 0.9;
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #fff;
+  font-weight: 600;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.ctaSecondary:hover {
+  background-color: rgba(255,255,255,0.05);
+}
+
+.featuresGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 32px;
+  margin-bottom: 80px;
+}
+
+.featureCard {
+  padding: 32px;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  background: rgba(255,255,255,0.01);
+}
+
+.featureIconWrapper {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(6, 182, 212, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  color: #06b6d4;
+}
+
+.featureTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.featureText {
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.previewBlock {
+  background: #0c0e12;
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 40px;
+  margin-bottom: 80px;
+}
+
+.previewTitle {
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.previewDesc {
+  color: #94a3b8;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 32px auto;
+  line-height: 1.5;
+}
+
+.codePre {
+  overflow-x: auto;
+  padding: 24px;
+  background: #050608;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.05);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+.instructionsContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.instructionsTitle {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.instructionsList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.instructionItem {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.instructionStepNumber {
+  background: #06b6d4;
+  color: #000;
+  font-weight: 700;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  flex-shrink: 0;
+}
+
+.instructionHeading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.instructionDesc {
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.codeInline {
+  color: #06b6d4;
+  background: rgba(6, 182, 212, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+}

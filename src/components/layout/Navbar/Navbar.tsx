@@ -128,7 +128,7 @@ export const Navbar: React.FC = () => {
           <Button
             variant="glow"
             size="sm"
-            href="https://reex-api-builder.toolshq.app"
+            href="https://studio.reex-api.dev"
             external
             iconRight={<ArrowRight size={13} strokeWidth={2.2} />}
             className={styles.launchBtn}
@@ -204,7 +204,7 @@ export const Navbar: React.FC = () => {
             <Button
               variant="glow"
               size="md"
-              href="https://reex-api-builder.toolshq.app"
+              href="https://studio.reex-api.dev"
               external
               iconRight={<ArrowRight size={14} strokeWidth={2.2} />}
               className={styles.mobileLaunchBtn}

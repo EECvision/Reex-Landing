@@ -67,7 +67,7 @@ export const Hero: React.FC = () => {
             <Button
               variant="glow"
               size="lg"
-              href="https://reex-api-builder.toolshq.app"
+              href="https://studio.reex-api.dev"
               external
               iconRight={<ArrowRight size={18} />}
             >

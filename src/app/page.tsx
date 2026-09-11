@@ -11,12 +11,50 @@ import { OpenSource } from "@/components/sections/OpenSource/OpenSource";
 import { Faq } from "@/components/sections/Faq/Faq";
 import { CtaBanner } from "@/components/sections/CtaBanner/CtaBanner";
 import { FeaturesMatrix } from "@/components/sections/FeaturesMatrix/FeaturesMatrix";
+import { siteConfig } from "@/lib/site";
 
 export default function Home() {
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${siteConfig.marketingUrl}/#website`,
+    "name": siteConfig.name,
+    "url": siteConfig.marketingUrl,
+  };
+
+  const softwareAppJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "@id": `${siteConfig.marketingUrl}/#software`,
+    "name": siteConfig.name,
+    "description": siteConfig.description,
+    "url": siteConfig.marketingUrl,
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Windows, macOS, Linux",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD",
+    },
+    "author": {
+      "@type": "Person",
+      "name": "Ezeka Emmanuel",
+      "url": "https://github.com/EECvision"
+    }
+  };
+
   return (
-    <div style={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <div className="app-container">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
+      />
       <Navbar />
-      <main style={{ flex: 1 }}>
+      <main className="main-content">
         <Hero />
         <HeroStudioVisual />
         <QuickStartBar />

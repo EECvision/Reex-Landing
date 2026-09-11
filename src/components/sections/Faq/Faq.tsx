@@ -112,9 +112,13 @@ export const Faq: React.FC = () => {
                   </span>
                 </button>
 
-                {isOpen && (
-                  <div id={`faq-answer-${idx}`} className={styles.content}>{item.answer}</div>
-                )}
+                <div
+                  id={`faq-answer-${idx}`}
+                  className={`${styles.content} ${isOpen ? styles.contentOpen : ""}`}
+                  aria-hidden={!isOpen}
+                >
+                  {item.answer}
+                </div>
               </div>
             );
           })}

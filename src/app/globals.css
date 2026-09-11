@@ -263,3 +263,14 @@ p, h1, h2, h3, h4 {
 .token-prop { color: #f1f5f9; }
 .token-num { color: #fbbf24; font-weight: 500; }
 .token-bool { color: #f43f5e; font-weight: 600; }
+
+/* Layout Utilities */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}

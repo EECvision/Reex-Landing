@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -15,10 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://reex-api-builder.toolshq.app"),
-  title: "Reex API — Open-Source Visual API Client & React Query Generator",
-  description:
-    "Open-source visual API client and code-generation bridge. Test endpoints in your browser with Private Network Access, sync bidirectional with your local repo via ts-morph, and auto-generate type-safe TanStack React Query hooks.",
+  metadataBase: new URL(siteConfig.marketingUrl),
+  title: siteConfig.title,
+  description: siteConfig.description,
+  alternates: {
+    canonical: "./",
+  },
   keywords: [
     "Reex API",
     "reex-cli",
@@ -33,11 +36,10 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Ezeka Emmanuel", url: "https://github.com/EECvision" }],
   openGraph: {
-    title: "Reex API — Open-Source Visual API Client & Code Generator",
-    description:
-      "Eliminate frontend integration boilerplate. Test endpoints visually, sync with your local repo, and generate production-ready TanStack React Query hooks.",
-    url: "https://reex-api-builder.toolshq.app",
-    siteName: "Reex API",
+    title: siteConfig.title,
+    description: siteConfig.description,
+    url: siteConfig.marketingUrl,
+    siteName: siteConfig.name,
     images: [
       {
         url: "/og-image.png",
@@ -51,14 +53,13 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Reex API — Open-Source Visual API Client & React Query Generator",
-    description:
-      "From API Schema to Type-Safe React Query in Seconds. 100% Free & Open-Source under MIT.",
+    title: siteConfig.title,
+    description: siteConfig.description,
     images: ["/og-image.png"],
-    creator: "@eecvision",
+    creator: siteConfig.twitterCreator,
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
   },
 };
 

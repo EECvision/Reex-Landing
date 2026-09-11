@@ -29,7 +29,7 @@ export const Footer: React.FC = () => {
             <ul className={styles.linkList}>
               <li className={styles.linkItem}>
                 <a
-                  href="https://reex-api-builder.toolshq.app"
+                  href="https://studio.reex-api.dev"
                   target="_blank"
                   rel="noopener noreferrer"
                 >

@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 40vh;
+  margin: 48px auto;
+}
+
+@media (max-width: 480px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 16px;
+    gap: 12px;
+  }
+}

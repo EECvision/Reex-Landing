@@ -12,10 +12,11 @@ export const HeroStudioVisual: React.FC = () => {
         <div className={styles.videoPlaceholderWrapper}>
           <Image
             src="/images/studio-video-placeholder.jpg"
-            alt="Reex Studio Video Placeholder"
+            alt="Reex Studio interface showing API projects and request configuration"
             width={1280}
             height={720}
             className={styles.videoImage}
+            sizes="(max-width: 768px) 100vw, 1280px"
             priority
           />
           <div className={styles.playButtonOverlay}>
