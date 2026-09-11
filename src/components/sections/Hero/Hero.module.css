@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  padding: 180px 0 80px;
+  padding: 220px 0 120px;
   overflow: hidden;
   text-align: center;
 }
@@ -48,12 +48,11 @@
 }
 
 .pillLink {
-  min-height: 44px;
   min-width: 0;
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  padding: 6px 16px;
+  padding: 4px 16px;
   border-radius: var(--radius-full);
   background: rgba(14, 20, 32, 0.7);
   border: 1px solid var(--border-medium);
@@ -85,7 +84,7 @@
 
 /* Headline */
 .title {
-  font-size: clamp(2.0rem, 4.0vw, 3.2rem);
+  font-size: clamp(2rem, 4vw, 3.2rem);
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -107,7 +106,7 @@
   line-height: 1.7;
   color: var(--text-secondary);
   max-width: 880px;
-  margin-bottom: 48px;
+  margin-bottom: 64px;
   font-weight: 400;
 }
 

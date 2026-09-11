@@ -1,33 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
 import { Container } from "@/components/ui/Container/Container";
-import { Button } from "@/components/ui/Button/Button";
-import {
-  ArrowRight,
-  Terminal,
-  Copy,
-  Check,
-  ShieldCheck,
-  Cpu,
-  Layers,
-  Sparkles,
-} from "lucide-react";
+import { Cpu, Layers, ShieldCheck, Sparkles } from "lucide-react";
+import React from "react";
 import styles from "./Hero.module.css";
 
 export const Hero: React.FC = () => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopyCommand = async () => {
-    try {
-      await navigator.clipboard.writeText("npm i -g reex-cli");
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2200);
-    } catch (err) {
-      console.error("Failed to copy command", err);
-    }
-  };
-
   return (
     <section className={styles.hero}>
       <Container>
@@ -41,53 +19,20 @@ export const Hero: React.FC = () => {
               className={styles.pillLink}
             >
               <Sparkles size={13} color="var(--accent-cyan)" />
-              <span>100% Free & Open Source under MIT • npm: reex-cli v7.3.1</span>
-              <ArrowRight size={13} />
+              <span>Free & Open Source under MIT</span>
             </a>
           </div>
 
           {/* Headline */}
           <h1 className={styles.title}>
-            From API Schema to{" "}
-            <span>Type-Safe React Query</span>{" "}
-            in Seconds.
+            From API Schema to <span>Type-Safe React Query</span> in Seconds.
           </h1>
 
           {/* Subtitle */}
           <p className={styles.subtitle}>
-            The open-source visual API client and AST generator. Test endpoints directly in your browser
-            with <span className={styles.codeInline}>Private Network Access</span>, sync
-            bidirectional with your local repo via{" "}
-            <span className={styles.codeInline}>reex start</span>, and eliminate frontend
-            integration boilerplate forever.
+            Test endpoints directly in your browser, and eliminate frontend
+            boilerplate.
           </p>
-
-          {/* Action Cluster */}
-          <div className={styles.ctaGroup}>
-            <Button
-              variant="glow"
-              size="lg"
-              href="https://studio.reex-api.dev"
-              external
-              iconRight={<ArrowRight size={18} />}
-            >
-              Launch Studio Free
-            </Button>
-
-            <button
-              type="button"
-              className={styles.cliQuickCopy}
-              onClick={handleCopyCommand}
-              title="Copy CLI install command"
-              aria-label={copied ? "Install command copied" : "Copy CLI install command"}
-            >
-              <Terminal size={17} color="var(--accent-cyan)" />
-              <span>npm i -g reex-cli</span>
-              <span className={styles.copyStatus} aria-live="polite">
-                {copied ? <Check size={16} /> : <Copy size={16} />}
-              </span>
-            </button>
-          </div>
 
           {/* Trust Highlights */}
           <div className={styles.badgesRow}>

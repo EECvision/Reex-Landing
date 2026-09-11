@@ -1,20 +1,20 @@
 "use client";
 
-import React, { useState } from "react";
+import { Card } from "@/components/ui/Card/Card";
 import { Container } from "@/components/ui/Container/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { Card } from "@/components/ui/Card/Card";
-import { Check, Copy } from "lucide-react";
+import { Check, Copy, Terminal } from "lucide-react";
+import React, { useState } from "react";
 import styles from "./QuickStartBar.module.css";
 
 export const QuickStartBar: React.FC = () => {
-  const [copied, setCopied] = useState(false);
+  const [copied, setCopied] = useState<string | null>(null);
 
-  const handleCopy = async () => {
+  const handleCopy = async (command: string) => {
     try {
-      await navigator.clipboard.writeText("reex start");
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      await navigator.clipboard.writeText(command);
+      setCopied(command);
+      setTimeout(() => setCopied(null), 2000);
     } catch (err) {
       console.error("Failed to copy command", err);
     }
@@ -34,31 +34,59 @@ export const QuickStartBar: React.FC = () => {
             />
           </div>
 
-          <Card variant="glass" padding="none" className={styles.commandCard}>
-            <div className={styles.commandLeft}>
-              <span className={styles.promptSymbol}>$</span>
-              <span className={styles.commandText}>reex start</span>
-            </div>
+          <div className={styles.commandGroup}>
+            <Card variant="glass" padding="none" className={styles.commandCard}>
+              <div className={styles.commandLeft}>
+                <span className={styles.promptSymbol}><Terminal size={14} /></span>
+                <span className={styles.commandText}>npm i -g reex-cli</span>
+              </div>
 
-            <button
-              type="button"
-              onClick={handleCopy}
-              className={`${styles.copyBtn} ${copied ? styles.copied : ""}`}
-              title="Copy command"
-            >
-              {copied ? (
-                <>
-                  <Check size={12} />
-                  <span>Copied!</span>
-                </>
-              ) : (
-                <>
-                  <Copy size={12} />
-                  <span>Copy</span>
-                </>
-              )}
-            </button>
-          </Card>
+              <button
+                type="button"
+                onClick={() => handleCopy("npm i -g reex-cli")}
+                className={`${styles.copyBtn} ${copied === "npm i -g reex-cli" ? styles.copied : ""}`}
+                title="Copy install command"
+              >
+                {copied === "npm i -g reex-cli" ? (
+                  <>
+                    <Check size={12} />
+                    {/* <span>Copied!</span> */}
+                  </>
+                ) : (
+                  <>
+                    <Copy size={12} />
+                    {/* <span>Copy</span> */}
+                  </>
+                )}
+              </button>
+            </Card>
+
+            <Card variant="glass" padding="none" className={styles.commandCard}>
+              <div className={styles.commandLeft}>
+                <span className={styles.promptSymbol}><Terminal size={14} /></span>
+                <span className={styles.commandText}>reex start</span>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => handleCopy("reex start")}
+                className={`${styles.copyBtn} ${copied === "reex start" ? styles.copied : ""}`}
+                title="Copy command"
+              >
+                {copied === "reex start" ? (
+                  <>
+                    <Check size={12} />
+                    {/* <span>Copied!</span> */}
+                  </>
+                ) : (
+                  <>
+                    <Copy size={12} />
+                    {/* <span>Copy</span> */}
+                  </>
+                )}
+              </button>
+            </Card>
+          </div>
         </div>
 
         {/* 3 Columns Grid */}

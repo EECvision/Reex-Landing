@@ -2,6 +2,7 @@
 
 import { Container } from "@/components/ui/Container/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
+import { Button } from "@/components/ui/Button/Button";
 import React, { useState } from "react";
 import styles from "./FeaturesMatrix.module.css";
 
@@ -434,11 +435,15 @@ const FEATURES = [
 
 export const FeaturesMatrix: React.FC = () => {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [showAll, setShowAll] = useState(false);
 
-  const filtered =
-    activeCategory === "all"
-      ? FEATURES
-      : FEATURES.filter((f) => f.category === activeCategory);
+  const isAllCategory = activeCategory === "all";
+  const allFiltered = isAllCategory
+    ? FEATURES
+    : FEATURES.filter((f) => f.category === activeCategory);
+
+  const totalFilteredCount = allFiltered.length;
+  const filtered = (isAllCategory && !showAll) ? allFiltered.slice(0, 18) : allFiltered;
 
   return (
     <section className={styles.section} id="features">
@@ -457,7 +462,10 @@ export const FeaturesMatrix: React.FC = () => {
               role="tab"
               aria-selected={activeCategory === cat.id}
               className={`${styles.tab} ${activeCategory === cat.id ? styles.tabActive : ""}`}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => {
+                setActiveCategory(cat.id);
+                setShowAll(false);
+              }}
             >
               {cat.label}
               {cat.id !== "all" && (
@@ -479,19 +487,17 @@ export const FeaturesMatrix: React.FC = () => {
           ))}
         </div>
 
-        <p className={styles.footerNote}>
-          <span className={styles.count}>{filtered.length}</span> feature
-          {filtered.length !== 1 ? "s" : ""}
-          {activeCategory !== "all" && (
-            <>
-              {" "}
-              ·{" "}
-              <span className={styles.categoryLabel}>
-                {CATEGORIES.find((c) => c.id === activeCategory)?.label}
-              </span>
-            </>
-          )}
-        </p>
+        {isAllCategory && !showAll && totalFilteredCount > 18 && (
+          <div className={styles.seeAllWrapper}>
+            <Button
+              variant="ghost"
+              size="md"
+              onClick={() => setShowAll(true)}
+            >
+              See all features
+            </Button>
+          </div>
+        )}
       </Container>
     </section>
   );

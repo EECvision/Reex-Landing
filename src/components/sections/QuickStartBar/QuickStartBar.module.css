@@ -30,6 +30,19 @@
   margin: 0;
 }
 
+.commandGroup {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+@media (min-width: 960px) {
+  .commandGroup {
+    justify-content: flex-end;
+  }
+}
+
 /* Command Card in Top Right */
 .commandCard {
   border-radius: 8px;
@@ -43,7 +56,6 @@
   max-width: 100%;
   box-sizing: border-box;
 }
-
 
 .commandLeft {
   min-width: 0;
@@ -84,7 +96,9 @@
   font-family: var(--font-mono);
   cursor: pointer;
   line-height: 1;
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
   white-space: nowrap;
 }
 
@@ -205,7 +219,7 @@
 
 @media (max-width: 1023px), (pointer: coarse) {
   .copyBtn {
-    min-height: 44px;
-    padding: 8px 12px;
+    min-height: 28px;
+    padding: 8px 8px;
   }
 }
