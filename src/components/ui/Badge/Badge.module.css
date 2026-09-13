@@ -31,9 +31,9 @@
 }
 
 .accent {
-  background: rgba(56, 189, 248, 0.08);
-  color: var(--accent-cyan);
-  border: 1px solid rgba(56, 189, 248, 0.28);
+  background: rgba(0, 122, 204, 0.12);
+  color: #3794ff;
+  border: 1px solid rgba(0, 122, 204, 0.35);
 }
 
 .success {

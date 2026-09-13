@@ -89,7 +89,7 @@
 
 .featureItem:hover {
   background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(56, 189, 248, 0.5); /* subtle cyan border */
+  border-color: #007fd4;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 

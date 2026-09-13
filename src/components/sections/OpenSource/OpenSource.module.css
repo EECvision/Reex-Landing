@@ -6,7 +6,7 @@
 .card {
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-xl);
-  background: #06080d;
+  background: var(--bg-surface);
   padding: 40px 48px;
   display: flex;
   align-items: flex-start;
@@ -41,9 +41,9 @@
   font-weight: 800;
   font-family: var(--font-mono);
   letter-spacing: 0.08em;
-  color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.25);
+  color: #3794ff;
+  background: rgba(0, 122, 204, 0.12);
+  border: 1px solid rgba(0, 122, 204, 0.3);
   border-radius: var(--radius-sm);
 }
 
@@ -103,7 +103,7 @@
   justify-content: space-between;
   gap: 16px;
   width: 100%;
-  background: #04060a;
+  background: var(--bg-void);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 10px 14px;

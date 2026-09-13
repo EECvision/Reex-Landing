@@ -78,9 +78,9 @@
 }
 
 .iconCyan {
-  background: rgba(56, 189, 248, 0.1);
+  background: rgba(0, 122, 204, 0.12);
   color: var(--accent-cyan);
-  border-color: rgba(56, 189, 248, 0.3);
+  border-color: rgba(0, 122, 204, 0.35);
 }
 
 .iconIndigo {
@@ -120,7 +120,7 @@
 .previewBox {
   border-radius: var(--radius-md);
   border: 1px solid var(--border-subtle);
-  background: #04060a;
+  background: var(--bg-void);
   padding: 18px;
   font-family: var(--font-mono);
   font-size: 0.8125rem;
@@ -150,9 +150,9 @@
 }
 
 .flowPillActive {
-  background: rgba(56, 189, 248, 0.12);
-  border-color: rgba(56, 189, 248, 0.35);
-  color: var(--accent-cyan);
+  background: rgba(0, 122, 204, 0.15);
+  border-color: rgba(0, 122, 204, 0.4);
+  color: #3794ff;
 }
 
 .flowArrow {

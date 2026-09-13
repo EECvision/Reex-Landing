@@ -48,17 +48,17 @@
 
 /* Variants */
 .primary {
-  background: var(--gradient-accent);
+  background: #007acc;
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 .primary:hover {
-  filter: brightness(1.08);
+  background: #0e639c;
 }
 
 .primary:active {
-  filter: brightness(0.96);
+  background: #005a9e;
 }
 
 .glow {
@@ -91,14 +91,14 @@
 }
 
 .outline {
-  background: rgba(16, 22, 34, 0.5);
+  background: var(--bg-surface);
   backdrop-filter: blur(12px);
   color: var(--text-primary);
-  border: 1px solid var(--border-subtle);
+  border: 1px solid var(--border-medium);
 }
 
 .outline:hover {
-  background: rgba(24, 33, 50, 0.75);
+  background: var(--bg-surface-elevated);
   border-color: var(--border-highlight);
   color: #ffffff;
 }

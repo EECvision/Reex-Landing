@@ -3,7 +3,7 @@
   max-width: 100%;
   border-radius: var(--radius-lg);
   border: 1px solid var(--border-subtle);
-  background: #05070c;
+  background: var(--bg-void);
   overflow: hidden;
   position: relative;
   font-family: var(--font-mono);
@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 12px 18px;
-  background: rgba(16, 22, 34, 0.6);
+  background: var(--bg-surface);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
 }
@@ -92,7 +92,7 @@
   font-size: 0.875rem;
   line-height: 1.7;
   color: var(--text-primary);
-  background: #05070c;
+  background: var(--bg-base);
 }
 
 .codeTable {

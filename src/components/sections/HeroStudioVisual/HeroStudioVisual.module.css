@@ -43,7 +43,7 @@
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: rgba(8, 11, 18, 0.6);
+  background: rgba(24, 24, 24, 0.7);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -54,7 +54,7 @@
 }
 
 .videoPlaceholderWrapper:hover .playButtonOverlay {
-  background: rgba(56, 189, 248, 0.8);
+  background: rgba(0, 122, 204, 0.9);
   border-color: rgba(255, 255, 255, 0.4);
 }
 

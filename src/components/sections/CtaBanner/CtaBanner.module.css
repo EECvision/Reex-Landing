@@ -5,11 +5,7 @@
 
 .bannerCard {
   position: relative;
-  background: linear-gradient(
-    180deg,
-    rgba(18, 25, 40, 0.85) 0%,
-    rgba(8, 11, 18, 0.96) 100%
-  );
+  background: var(--gradient-card);
   border: 1px solid var(--border-medium);
   border-radius: var(--radius-xl);
   padding: 72px 36px;
@@ -27,11 +23,10 @@
   height: 320px;
   background: radial-gradient(
     circle at 50% 30%,
-    rgba(56, 189, 248, 0.3) 0%,
-    rgba(99, 102, 241, 0.2) 45%,
-    transparent 75%
+    rgba(255, 255, 255, 0.03) 0%,
+    transparent 70%
   );
-  filter: blur(50px);
+  filter: blur(40px);
   pointer-events: none;
 }
 

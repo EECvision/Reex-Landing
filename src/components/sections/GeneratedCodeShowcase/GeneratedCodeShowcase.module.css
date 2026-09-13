@@ -7,7 +7,7 @@
 .showcaseWindow {
   border-radius: var(--radius-xl);
   border: 1px solid var(--border-medium);
-  background: #06080d;
+  background: #1f1f1f;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@
   align-items: center;
   gap: 12px;
   padding: 10px 16px;
-  background: #0d1117;
+  background: #181818;
   border-bottom: 1px solid var(--border-subtle);
   flex-shrink: 0;
 }
@@ -79,7 +79,7 @@
 /* ── Left File Tree ───────────────────────────────────── */
 .fileTreePane {
   min-width: 0;
-  background: rgba(10, 14, 22, 0.8);
+  background: #181818;
   border-right: 1px solid var(--border-subtle);
   padding: 16px 12px;
   display: flex;
@@ -142,8 +142,8 @@
 }
 
 .treeItemActive {
-  background: rgba(56, 189, 248, 0.08);
-  border-color: rgba(56, 189, 248, 0.2);
+  background: #2a2d2e;
+  border-color: transparent;
   color: #ffffff;
 }
 
@@ -195,8 +195,8 @@
 
 .treeItemActive .treeTag {
   display: inline;
-  color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.1);
+  color: #3794ff;
+  background: rgba(0, 122, 204, 0.15);
 }
 
 .treeLegend {
@@ -222,7 +222,7 @@
   min-width: 0;
   display: flex;
   flex-direction: column;
-  background: #04060a;
+  background: #1f1f1f;
   overflow: hidden;
 }
 
@@ -230,11 +230,11 @@
 .tabBar {
   display: flex;
   border-bottom: 1px solid var(--border-subtle);
-  background: #080b12;
+  background: #181818;
   overflow-x: auto;
   flex-shrink: 0;
   scrollbar-width: thin;
-  scrollbar-color: var(--text-muted) #080b12;
+  scrollbar-color: var(--text-muted) #181818;
   padding: 3px;
 }
 
@@ -259,7 +259,7 @@
 
 .editorTab:hover {
   color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.04);
 }
 
 .editorTab:focus-visible {
@@ -267,9 +267,9 @@
 }
 
 .editorTabActive {
-  color: var(--text-primary);
-  border-bottom-color: var(--accent-cyan);
-  background: rgba(56, 189, 248, 0.04);
+  color: #ffffff;
+  border-bottom-color: #0078d4;
+  background: #1f1f1f;
 }
 
 /* Breadcrumb */
@@ -280,7 +280,7 @@
   font-family: var(--font-mono);
   color: var(--text-dim);
   border-bottom: 1px solid var(--border-subtle);
-  background: #04060a;
+  background: #1f1f1f;
   flex-shrink: 0;
 }
 

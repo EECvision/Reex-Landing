@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #050608;
+  background-color: var(--bg-void);
   color: #fff;
 }
 
@@ -125,8 +125,8 @@
 }
 
 .previewBlock {
-  background: #0c0e12;
-  border: 1px solid rgba(255,255,255,0.05);
+  background: var(--bg-surface);
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 16px;
   padding: 40px;
   margin-bottom: 80px;
@@ -150,9 +150,9 @@
 .codePre {
   overflow-x: auto;
   padding: 24px;
-  background: #050608;
+  background: var(--bg-base);
   border-radius: 8px;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
   font-size: 14px;
   line-height: 1.5;
   color: #e2e8f0;
