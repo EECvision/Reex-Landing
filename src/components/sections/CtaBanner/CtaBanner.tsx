@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/Button/Button";
 import { Container } from "@/components/ui/Container/Container";
 import { SectionHeader } from "@/components/ui/SectionHeader";
-import { ArrowRight, Sparkles, Star } from "lucide-react";
+import { ArrowRight, Star } from "lucide-react";
 import React from "react";
 import styles from "./CtaBanner.module.css";
 
@@ -17,12 +17,6 @@ export const CtaBanner: React.FC = () => {
               align="center"
               titleSize="lg"
               className={styles.header}
-              tag={
-                <>
-                  <Sparkles size={13} />
-                  <span>Start In Seconds</span>
-                </>
-              }
               title="Ready to eliminate frontend API boilerplate?"
               description="Test endpoints in your browser right now or run the CLI in your codebase. 100% free and open source forever."
             />
