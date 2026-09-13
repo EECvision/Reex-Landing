@@ -82,6 +82,21 @@
   letter-spacing: 0.05em;
 }
 
+.animatedSparkle {
+  animation: sparkle-pulse 2.5s infinite ease-in-out;
+}
+
+@keyframes sparkle-pulse {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15) rotate(15deg);
+    opacity: 0.8;
+  }
+}
+
 /* Headline */
 .title {
   font-size: clamp(2rem, 4vw, 3.2rem);

@@ -18,7 +18,7 @@ export const Hero: React.FC = () => {
               rel="noopener noreferrer"
               className={styles.pillLink}
             >
-              <Sparkles size={13} color="var(--accent-cyan)" />
+              <Sparkles size={13} color="#fbbf24" className={styles.animatedSparkle} />
               <span>Free & Open Source under MIT</span>
             </a>
           </div>

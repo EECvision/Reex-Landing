@@ -64,15 +64,17 @@ const FAQ_ITEMS: FaqItem[] = [
     ),
   },
   {
-    question: "Can my organization self-host the studio in our private cloud?",
+    question: "Where is my API data stored?",
     answer: (
       <p>
-        Yes. A pre-built Docker image is available on GitHub Container Registry (
-        <code>ghcr.io/eecvision/reex-api-builder</code>). You can host it behind your private VPN or
-        run it locally without ever connecting to external servers.
+        Reex does not maintain any external database; everything runs entirely in your browser. 
+        Your collections and endpoints are securely stored in <strong>IndexedDB</strong>, while 
+        your settings and preferences are saved in <strong>localStorage</strong>. 
+        Your API schemas, requests, and tokens never leave your machine, ensuring complete privacy.
       </p>
     ),
   },
+
 ];
 
 export const Faq: React.FC = () => {

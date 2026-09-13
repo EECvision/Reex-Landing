@@ -6,7 +6,7 @@ import logoDark from "@/assets/logo-dark.svg";
 import React from "react";
 import styles from "./Footer.module.css";
 
-export const Footer: React.FC = () => {
+export const Footer: React.FC<{ cliVersion?: string }> = ({ cliVersion = "v7.3.2" }) => {
   return (
     <footer className={styles.footer}>
       <Container>
@@ -27,6 +27,15 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className={styles.colTitle}>Product</h4>
             <ul className={styles.linkList}>
+              <li className={styles.linkItem}>
+                <a
+                  href="https://docs.reex-api.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Documentation
+                </a>
+              </li>
               <li className={styles.linkItem}>
                 <a
                   href="https://studio.reex-api.dev"
@@ -162,7 +171,7 @@ export const Footer: React.FC = () => {
 
           <div className={styles.statusPill}>
             <span className={styles.statusDot} />
-            <span>reex-cli v7.3.1</span>
+            <span>reex-cli {cliVersion}</span>
           </div>
         </div>
       </Container>

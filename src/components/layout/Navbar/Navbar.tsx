@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/Button/Button";
 import { Menu, X, Package, ArrowRight } from "lucide-react";
 import styles from "./Navbar.module.css";
 
-export const Navbar: React.FC = () => {
+export const Navbar: React.FC<{ cliVersion?: string }> = ({ cliVersion = "v7.3.2" }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const toggleRef = useRef<HTMLButtonElement>(null);
   const wrapperRef = useRef<HTMLDivElement>(null);
@@ -79,6 +79,11 @@ export const Navbar: React.FC = () => {
         <nav className={styles.desktopNav} aria-label="Primary">
           <ul className={styles.navLinks}>
             <li>
+              <a href="https://docs.reex-api.dev" target="_blank" rel="noopener noreferrer" className={styles.navLink}>
+                Docs
+              </a>
+            </li>
+            <li>
               <a href="#features" className={styles.navLink}>
                 Features
               </a>
@@ -122,7 +127,7 @@ export const Navbar: React.FC = () => {
           >
             <Package size={13} color="#f43f5e" />
             <span>NPM</span>
-            <span className={styles.starCount}>v7.3.1</span>
+            <span className={styles.starCount}>{cliVersion}</span>
           </a>
 
           <Button
@@ -156,6 +161,11 @@ export const Navbar: React.FC = () => {
       {mobileOpen && (
         <nav id="mobile-navigation" aria-label="Mobile" className={styles.mobileMenu}>
           <ul className={styles.mobileNavLinks}>
+            <li>
+              <a href="https://docs.reex-api.dev" target="_blank" rel="noopener noreferrer" tabIndex={0} className={styles.mobileNavLink} onClick={closeMobile}>
+                Docs
+              </a>
+            </li>
             <li>
               <a href="#features" tabIndex={0} className={styles.mobileNavLink} onClick={closeMobile}>
                 Features
@@ -198,7 +208,7 @@ export const Navbar: React.FC = () => {
               tabIndex={0}
             >
               <Package size={13} color="#f43f5e" />
-              <span>NPM Package (v7.3.1)</span>
+              <span>NPM Package ({cliVersion})</span>
             </a>
 
             <Button

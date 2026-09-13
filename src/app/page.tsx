@@ -13,7 +13,24 @@ import { CtaBanner } from "@/components/sections/CtaBanner/CtaBanner";
 import { FeaturesMatrix } from "@/components/sections/FeaturesMatrix/FeaturesMatrix";
 import { siteConfig } from "@/lib/site";
 
-export default function Home() {
+async function getCliVersion() {
+  try {
+    const res = await fetch("https://registry.npmjs.org/reex-cli/latest", {
+      next: { revalidate: 60 },
+    });
+    if (res.ok) {
+      const data = await res.json();
+      if (data.version) return `v${data.version}`;
+    }
+  } catch (e) {
+    // Ignore error and fallback
+  }
+  return "v7.3.2";
+}
+
+export default async function Home() {
+  const cliVersion = await getCliVersion();
+
   const websiteJsonLd = {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -53,7 +70,7 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
       />
-      <Navbar />
+      <Navbar cliVersion={cliVersion} />
       <main className="main-content">
         <Hero />
         <HeroStudioVisual />
@@ -66,7 +83,7 @@ export default function Home() {
         <Faq />
         <CtaBanner />
       </main>
-      <Footer />
+      <Footer cliVersion={cliVersion} />
     </div>
   );
 }

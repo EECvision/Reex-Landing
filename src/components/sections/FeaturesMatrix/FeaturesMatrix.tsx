@@ -402,8 +402,8 @@ const FEATURES = [
   },
   {
     id: 63,
-    name: "Persistent Workspace",
-    desc: "Request configs, responses, and interfaces survive browser sessions.",
+    name: "Local-First Browser Storage",
+    desc: "No external database. Collections are securely stored in IndexedDB and settings in localStorage. Your data never leaves your machine.",
     category: "sandbox",
   },
   // Modes
@@ -468,11 +468,11 @@ export const FeaturesMatrix: React.FC = () => {
               }}
             >
               {cat.label}
-              {cat.id !== "all" && (
-                <span className={styles.tabCount}>
-                  {FEATURES.filter((f) => f.category === cat.id).length}
-                </span>
-              )}
+              <span className={styles.tabCount}>
+                {cat.id === "all"
+                  ? FEATURES.length
+                  : FEATURES.filter((f) => f.category === cat.id).length}
+              </span>
             </button>
           ))}
         </div>
@@ -481,7 +481,10 @@ export const FeaturesMatrix: React.FC = () => {
         <div className={styles.featureGrid} role="tabpanel">
           {filtered.map((feature) => (
             <div key={feature.id} className={styles.featureItem}>
-              <span className={styles.featureName}>{feature.name}</span>
+              <div className={styles.featureHeader}>
+                <div className={styles.featureIcon} />
+                <span className={styles.featureName}>{feature.name}</span>
+              </div>
               <span className={styles.featureDesc}>{feature.desc}</span>
             </div>
           ))}
