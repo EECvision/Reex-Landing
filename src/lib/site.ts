@@ -1,12 +1,14 @@
+import brand from "../../seo/brand.json";
+
 export const siteConfig = {
-  name: "Reex API",
-  title: "Reex API | Open-Source API Client & React Query Generator",
+  name: brand.sites.marketing.name,
+  title: `${brand.searchName} | The React Framework for API Integration`,
   description:
-    "Test APIs visually and generate type-safe TanStack Query hooks from OpenAPI or Postman collections with Reex, an open-source API client.",
-  marketingUrl: "https://reex-api.dev",
-  studioUrl: "https://studio.reex-api.dev",
-  docsUrl: "https://docs.reex-api.dev",
-  githubUrl: "https://github.com/EECvision/Reex-api-bridge",
-  ogImage: "https://reex-api.dev/og-image.png",
+    `${brand.searchName} is ${brand.positioning.replace(/^The /, "the ")}. Turn OpenAPI and Postman collections into TypeScript clients, TanStack Query hooks, and authentication code.`,
+  marketingUrl: brand.origins.marketing,
+  studioUrl: brand.origins.studio,
+  docsUrl: brand.origins.docs,
+  githubUrl: brand.package.repository,
+  ogImage: `${brand.origins.marketing}/og-image.png`,
   twitterCreator: "@eecvision",
 };

@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/site";
+import { INDEXING_ENABLED } from "@/lib/seo";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +9,7 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: `${siteConfig.marketingUrl}/sitemap.xml`,
+    // Leave noindex pages crawlable so their directives can be read.
+    ...(INDEXING_ENABLED ? { sitemap: `${siteConfig.marketingUrl}/sitemap.xml` } : {}),
   };
 }

@@ -1,19 +1,8 @@
 import type { MetadataRoute } from "next";
-import { siteConfig } from "@/lib/site";
+import { INDEXING_ENABLED, PUBLIC_PATHS, siteUrl } from "@/lib/seo";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const routes = [
-    "",
-    "/react-query-generator",
-    "/openapi-react-query",
-    "/postman-to-react-query",
-    "/guides/getting-started",
-  ];
-
-  return routes.map((route) => ({
-    url: `${siteConfig.marketingUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: route === "" ? "weekly" : "monthly",
-    priority: route === "" ? 1.0 : route.startsWith("/guides") ? 0.7 : 0.8,
-  }));
+  // Navigation-only pages stay excluded until they have substantive content.
+  // Omit lastModified until a real content-change date is available.
+  return INDEXING_ENABLED ? PUBLIC_PATHS.map((path) => ({ url: siteUrl(path) })) : [];
 }

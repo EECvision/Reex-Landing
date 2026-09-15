@@ -30,8 +30,9 @@ export const Hero: React.FC = () => {
 
           {/* Subtitle */}
           <p className={styles.subtitle}>
-            Test endpoints directly in your browser, and eliminate frontend
-            boilerplate.
+            Reex API is the React framework for API integration. Test endpoints
+            directly in your browser, and turn OpenAPI or Postman collections
+            into production-ready TanStack Query hooks.
           </p>
 
           {/* Trust Highlights */}

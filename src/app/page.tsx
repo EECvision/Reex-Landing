@@ -12,6 +12,13 @@ import { Faq } from "@/components/sections/Faq/Faq";
 import { CtaBanner } from "@/components/sections/CtaBanner/CtaBanner";
 import { FeaturesMatrix } from "@/components/sections/FeaturesMatrix/FeaturesMatrix";
 import { siteConfig } from "@/lib/site";
+import { homeStructuredData, pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: siteConfig.title,
+  description: siteConfig.description,
+  path: "/",
+});
 
 async function getCliVersion() {
   try {
@@ -31,44 +38,11 @@ async function getCliVersion() {
 export default async function Home() {
   const cliVersion = await getCliVersion();
 
-  const websiteJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": `${siteConfig.marketingUrl}/#website`,
-    "name": siteConfig.name,
-    "url": siteConfig.marketingUrl,
-  };
-
-  const softwareAppJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "@id": `${siteConfig.marketingUrl}/#software`,
-    "name": siteConfig.name,
-    "description": siteConfig.description,
-    "url": siteConfig.marketingUrl,
-    "applicationCategory": "DeveloperApplication",
-    "operatingSystem": "Windows, macOS, Linux",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD",
-    },
-    "author": {
-      "@type": "Person",
-      "name": "Ezeka Emmanuel",
-      "url": "https://github.com/EECvision"
-    }
-  };
-
   return (
     <div className="app-container">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareAppJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData).replace(/</g, "\\u003c") }}
       />
       <Navbar cliVersion={cliVersion} />
       <main className="main-content">

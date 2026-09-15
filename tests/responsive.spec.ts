@@ -156,9 +156,9 @@ test("FAQ expansion and feature filters keep content readable", async ({ page })
 test("copy controls preserve the complete commands", async ({ page, browserName, context }) => {
   test.skip(browserName !== "chromium", "Clipboard permissions differ across browser engines.");
   await context.grantPermissions(["clipboard-read", "clipboard-write"]);
-  await page.getByRole("button", { name: "Copy CLI install command", exact: true }).click();
+  await page.locator("#quickstart").getByRole("button", { name: "Copy install command", exact: true }).click();
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe("npm i -g reex-cli");
-  await page.locator("#quickstart").getByRole("button", { name: "Copy", exact: true }).click();
+  await page.locator("#quickstart").getByRole("button", { name: "Copy command", exact: true }).click();
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe("reex start");
   await page.locator("#open-source").getByRole("button", { name: "Copy install command", exact: true }).click();
   await expect.poll(() => page.evaluate(() => navigator.clipboard.readText())).toBe("npm i -g reex-cli");

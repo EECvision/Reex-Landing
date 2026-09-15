@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { siteConfig } from "@/lib/site";
+import { INDEXING_ENABLED } from "@/lib/seo";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -19,45 +20,10 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.marketingUrl),
   title: siteConfig.title,
   description: siteConfig.description,
-  alternates: {
-    canonical: "./",
-  },
-  keywords: [
-    "Reex API",
-    "reex-cli",
-    "React Query generator",
-    "TanStack Query",
-    "OpenAPI code generator",
-    "Postman collection parser",
-    "AST code generator",
-    "Private Network Access API testing",
-    "open source API client",
-    "TypeScript API hooks",
-  ],
+  applicationName: siteConfig.name,
   authors: [{ name: "Ezeka Emmanuel", url: "https://github.com/EECvision" }],
-  openGraph: {
-    title: siteConfig.title,
-    description: siteConfig.description,
-    url: siteConfig.marketingUrl,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Reex API - Visual API Client and React Query Code Generator",
-      },
-    ],
-    locale: "en_US",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: ["/og-image.png"],
-    creator: siteConfig.twitterCreator,
-  },
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION || undefined },
+  robots: { index: INDEXING_ENABLED, follow: true },
   icons: {
     icon: "/favicon.svg",
   },
