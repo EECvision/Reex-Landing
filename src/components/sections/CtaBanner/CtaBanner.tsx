@@ -35,7 +35,7 @@ export const CtaBanner: React.FC = () => {
               <Button
                 variant="outline"
                 size="lg"
-                href="https://github.com/EECvision/Reex-api-bridge"
+                href="https://github.com/EECvision/reex-cli"
                 external
                 icon={<Star size={18} fill="#fbbf24" color="#fbbf24" />}
               >

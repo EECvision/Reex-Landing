@@ -59,7 +59,7 @@ export const OpenSource: React.FC = () => {
           <div className={styles.cardRight}>
             <Button
               variant="outline"
-              href="https://github.com/EECvision/Reex-api-client"
+              href="https://github.com/EECvision/reex-client"
               external
               iconRight={<ExternalLink size={14} />}
             >

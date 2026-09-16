@@ -13,7 +13,7 @@ export const Hero: React.FC = () => {
           {/* Announcement Capsule */}
           <div className={styles.pillWrapper}>
             <a
-              href="https://github.com/EECvision/Reex-api-bridge"
+              href="https://github.com/EECvision/reex-cli"
               target="_blank"
               rel="noopener noreferrer"
               className={styles.pillLink}

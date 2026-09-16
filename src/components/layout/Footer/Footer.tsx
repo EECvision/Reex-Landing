@@ -72,7 +72,7 @@ export const Footer: React.FC<{ cliVersion?: string }> = ({ cliVersion = "v7.3.2
             <ul className={styles.linkList}>
               <li className={styles.linkItem}>
                 <a
-                  href="https://github.com/EECvision/Reex-api-client"
+                  href="https://github.com/EECvision/reex-client"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -81,16 +81,16 @@ export const Footer: React.FC<{ cliVersion?: string }> = ({ cliVersion = "v7.3.2
               </li>
               <li className={styles.linkItem}>
                 <a
-                  href="https://github.com/EECvision/Reex-api-bridge"
+                  href="https://github.com/EECvision/reex-cli"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <GithubIcon size={12} /> CLI Bridge Repo
+                  <GithubIcon size={12} /> CLI Repo
                 </a>
               </li>
               <li className={styles.linkItem}>
                 <a
-                  href="https://github.com/EECvision/Reex-api-bridge/issues"
+                  href="https://github.com/EECvision/reex-cli/issues"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -99,7 +99,7 @@ export const Footer: React.FC<{ cliVersion?: string }> = ({ cliVersion = "v7.3.2
               </li>
               <li className={styles.linkItem}>
                 <a
-                  href="https://github.com/EECvision/Reex-api-bridge/blob/main/LICENSE"
+                  href="https://github.com/EECvision/reex-cli/blob/main/LICENSE"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
