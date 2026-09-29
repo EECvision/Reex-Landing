@@ -8,7 +8,12 @@ export const INDEXING_ENABLED =
   process.env.NODE_ENV === "production" &&
   (!process.env.VERCEL_ENV || process.env.VERCEL_ENV === "production");
 
-export const PUBLIC_PATHS = ["/"] as const;
+export const PUBLIC_PATHS = [
+  "/",
+  "/openapi-react-query",
+  "/postman-to-react-query",
+  "/react-query-generator",
+] as const;
 
 export function siteUrl(path: string) {
   return new URL(path, siteConfig.marketingUrl).href;

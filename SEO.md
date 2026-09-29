@@ -9,15 +9,15 @@ The marketing site is the primary brand destination for Reex API, the React fram
 | Route | Indexing | Canonical | Sitemap |
 | --- | --- | --- | --- |
 | `/` | Index in production | `https://www.reex-api.dev/` | Yes |
+| `/openapi-react-query` | Index in production | `https://www.reex-api.dev/openapi-react-query` | Yes |
+| `/postman-to-react-query` | Index in production | `https://www.reex-api.dev/postman-to-react-query` | Yes |
+| `/react-query-generator` | Index in production | `https://www.reex-api.dev/react-query-generator` | Yes |
 | `/index` | Permanent redirect to `/` | Destination handles it | No |
-| `/react-query-generator` | Noindex, follow | None | No |
-| `/openapi-react-query` | Noindex, follow | None | No |
-| `/postman-to-react-query` | Noindex, follow | None | No |
 | `/guides/getting-started` | Noindex, follow | None | No |
 
-The four excluded routes currently render only navigation. Their UI remains available, while their unsupported article/content schema is removed. Restore indexing only after substantive content is added under a separate content change. Each has its own social title and URL; no homepage metadata is inherited accidentally.
+`/openapi-react-query`, `/postman-to-react-query`, and `/react-query-generator` are fully built landing pages with substantive technical content, code previews, feature grids, step-by-step guides, and structured JSON-LD schemas. They are indexed in production and included in the sitemap. `/guides/getting-started` remains a lightweight navigation route excluded from the sitemap until full multi-step guide content is added.
 
-The sitemap lists only the homepage. It has no artificial build-time modification dates. Robots permits crawling of noindex pages and blocks only API routes.
+The sitemap lists the homepage and the three active landing routes. It has no artificial build-time modification dates. Robots permits crawling of noindex pages and blocks only API routes.
 
 The homepage has one WebSite and one SoftwareApplication graph linked by a common product ID. Site-name alternatives include Reex and the actual domain. The graph references the Studio application and documentation without treating them as duplicate pages.
 

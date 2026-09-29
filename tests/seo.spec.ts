@@ -3,7 +3,24 @@ import brand from "../seo/brand.json";
 
 const origin = brand.origins.marketing;
 const indexable = process.env.SEO_EXPECT_NOINDEX !== "true";
-const excluded = ["/react-query-generator", "/openapi-react-query", "/postman-to-react-query", "/guides/getting-started"];
+const indexedSubPages = [
+  {
+    path: "/openapi-react-query",
+    title: "OpenAPI to React Query | Generate Type-Safe Hooks | Reex API",
+    heading: "OpenAPI to Type-Safe React Query Hooks",
+  },
+  {
+    path: "/postman-to-react-query",
+    title: "Postman to React Query | Convert Collections to Hooks | Reex API",
+    heading: "Postman Collections to Production React Query Hooks",
+  },
+  {
+    path: "/react-query-generator",
+    title: "React Query Generator | TanStack Query Code Generator | Reex API",
+    heading: "The Intelligent React Query Generator for Modern Web Apps",
+  },
+];
+const excluded = ["/guides/getting-started"];
 
 test.describe("rendered SEO", () => {
   test.use({ javaScriptEnabled: false });
@@ -39,6 +56,24 @@ test.describe("rendered SEO", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("From API Schema to Type-Safe React Query in Seconds.");
   });
 
+  for (const subPage of indexedSubPages) {
+    test(`${subPage.path} is indexed with full content, canonical URL, and schema`, async ({ page }) => {
+      const response = await page.goto(subPage.path);
+      expect(response?.status()).toBe(200);
+      await expect(page).toHaveTitle(subPage.title);
+      const canonical = page.locator('head link[rel="canonical"]');
+      await expect(canonical).toHaveCount(1);
+      expect(new URL((await canonical.getAttribute("href"))!).href).toBe(`${origin}${subPage.path}`);
+      await expect(page.locator('head meta[name="robots"]')).toHaveAttribute(
+        "content",
+        indexable ? "index, follow" : "noindex, follow"
+      );
+      const schema = JSON.parse(await page.locator('script[type="application/ld+json"]').innerText());
+      expect(schema["@graph"].length).toBeGreaterThan(0);
+      await expect(page.getByRole("heading", { level: 1 })).toHaveText(subPage.heading);
+    });
+  }
+
   for (const path of excluded) {
     test(`${path} stays available but is excluded from search`, async ({ page }) => {
       expect((await page.goto(path))?.status()).toBe(200);
@@ -58,7 +93,16 @@ test("sitemap, robots, redirects, images and errors agree", async ({ request }) 
   const sitemap = await request.get("/sitemap.xml");
   expect(sitemap.status()).toBe(200);
   const xml = await sitemap.text();
-  expect([...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1])).toEqual(indexable ? [`${origin}/`] : []);
+  expect([...xml.matchAll(/<loc>(.*?)<\/loc>/g)].map(match => match[1])).toEqual(
+    indexable
+      ? [
+          `${origin}/`,
+          `${origin}/openapi-react-query`,
+          `${origin}/postman-to-react-query`,
+          `${origin}/react-query-generator`,
+        ]
+      : []
+  );
   expect(xml).not.toContain("<lastmod>");
   const robots = await request.get("/robots.txt");
   const rules = await robots.text();
